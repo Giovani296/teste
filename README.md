@@ -53,7 +53,7 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
--- ===== ESP AUTOMÁTICO (HITBOX REAL) =====
+-- ===== ESP =====
 local ESP = {}
 
 local function createESP(player)
@@ -86,6 +86,7 @@ end
 for _, p in ipairs(Players:GetPlayers()) do
     createESP(p)
 end
+
 Players.PlayerAdded:Connect(createESP)
 Players.PlayerRemoving:Connect(removeESP)
 
@@ -125,21 +126,16 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
--- ===== GUI (CENTRALIZADA + ARRASTÁVEL) =====
+-- ===== GUI =====
 local gui = Instance.new("ScreenGui", LocalPlayer:WaitForChild("PlayerGui"))
 gui.ResetOnSpawn = false
 
 local frame = Instance.new("Frame", gui)
 frame.Size = UDim2.new(0, 180, 0, 110)
-
--- 🔥 CENTRALIZA NA TELA
 frame.AnchorPoint = Vector2.new(0.5, 0.5)
 frame.Position = UDim2.new(0.5, 0, 0.5, 0)
-
--- 🔥 CONTINUA ARRASTÁVEL
 frame.Active = true
 frame.Draggable = true
-
 frame.BackgroundColor3 = Color3.fromRGB(25,25,25)
 frame.BorderSizePixel = 0
 Instance.new("UICorner", frame)
